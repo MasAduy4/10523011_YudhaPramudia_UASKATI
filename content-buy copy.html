@@ -1,0 +1,74 @@
+<html>
+<body>
+
+<h2><b>PESANAN DAN PEMBAYARAN</b></h2>
+<form name="form" id="orderForm">
+<hr>
+<table>
+    <tr><td>Nama<td>: <input type="text" name="nama" size="20">
+    <tr><td>Pesanan <td>:<input type="checkbox" name="type" value="Paket Bore Up Blok BRT DOUBLE COLLER Vario 125 Vario 150 Pcx 150 Adv 150 ARC"> Paket Bore Up Blok BRT DOUBLE COLLER Vario 125 Vario 150 Pcx 150 Adv 150 ARC
+    <tr><td><td>:<input type="checkbox" name="type" value="Paket Bore Up Blok BRT Genio Beat Deluxe 2020 Scoopy Stylish 2021 Beat Street New ART Racing"> Paket Bore Up Blok BRT Genio Beat Deluxe 2020 Scoopy Stylish 2021 Beat Street New ART Racing
+    <tr><td><td>:<input type="checkbox" name="type" value="Paket Bore Up Blok BRT PISTON MENTAH Vario 125 Vario 150 Pcx 150 Adv 150 Pendingin Ganda"> Paket Bore Up Blok BRT PISTON MENTAH Vario 125 Vario 150 Pcx 150 Adv 150 Pendingin Ganda
+    <tr><td><td>:<input type="checkbox" name="type" value="Throttle Body TB BRT Vario 125 150 PCX ADV dan Velocity"> Throttle Body TB BRT Vario 125 150 PCX ADV dan Velocity
+    <tr><td><td>:<input type="checkbox" name="type" value="Velg KTC Ares R 14"> Velg KTC Ares R 14
+    <tr><td><td>:<input type="checkbox" name="type" value="Knalpot TZM Project Exhaust STD Non SS Pro Full Package"> Knalpot TZM Project Exhaust STD Non SS Pro Full Package
+    <tr><td><td>:<input type="checkbox" name="type" value="Shock Shockbreaker Ohlins WAVE"> Shock Shockbreaker Ohlins WAVE
+    <tr><td><td>:<input type="checkbox" name="type" value="Kaliper 2 Piston Samurai Nissin Universal Untuk Semua Motor"> Kaliper 2 Piston Samurai Nissin Universal Untuk Semua Motor
+    <tr><td><td>:<input type="checkbox" name="type" value="PROJECTOR BILED AES TURBO SE UPGRADE EXPERIENCE 2.5in 60watt"> PROJECTOR BILED AES TURBO SE UPGRADE EXPERIENCE 2.5in 60watt
+
+<tr><td>Untuk Motor<td>: 
+<select size="1" name="size">
+    <option>Vario 125/150</option>
+    <option>Genio/Beat Deluxe</option>
+    <option>Aerox</option>
+    <option>Scoopy/Beat Esp</option>
+    <option>PCX 150</option>
+    <option>ADV 150</option>
+    <option>Mio</option>
+</select>
+<tr><td>Pembayaran<td>:<input type="checkbox" name="payment" value="BCA"> BCA
+<tr><td><td>:<input type="checkbox" name="payment" value="BNI"> BNI
+<tr><td><td>:<input type="checkbox" name="payment" value="MANDIRI"> MANDIRI
+<tr><td><td>:<input type="checkbox" name="payment" value="DANA"> DANA
+<tr><td>Alamat<td>: <textarea name="address" cols="35" rows="5"> </textarea>
+</table>
+<hr>
+<input type="button" value="Kirim" onclick="processForm()">
+</form>
+
+<div id="output"></div>
+
+<script>
+function processForm() {
+    const form = document.forms['form'];
+    const nama = form['nama'].value;
+    const pesanan = [];
+    const types = form['type'];
+    for (let i = 0; i < types.length; i++) {
+        if (types[i].checked) {
+            pesanan.push(types[i].value);
+        }
+    }
+    const motor = form['size'].value;
+    const pembayaran = [];
+    const payments = form['payment'];
+    for (let i = 0; i < payments.length; i++) {
+        if (payments[i].checked) {
+            pembayaran.push(payments[i].value);
+        }
+    }
+    const alamat = form['address'].value;
+
+    let output = `<h2>Rincian Pesanan</h2>`;
+    output += `<p><b>Nama:</b> ${nama}</p>`;
+    output += `<p><b>Pesanan:</b> ${pesanan.join(', ')}</p>`;
+    output += `<p><b>Untuk Motor:</b> ${motor}</p>`;
+    output += `<p><b>Pembayaran:</b> ${pembayaran.join(', ')}</p>`;
+    output += `<p><b>Alamat:</b> ${alamat}</p>`;
+
+    document.getElementById('output').innerHTML = output;
+}
+</script>
+
+</body>
+</html>
